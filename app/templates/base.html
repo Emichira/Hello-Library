@@ -4,25 +4,79 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
     <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <div class="header clearfix">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li role="presentation"><a href="/">Home</a></li>
-                    <li role="presentation"><a href="/about">About</a></li>
-                    <li role="presentation"><a href="http://flask.pocoo.org" target="_blank">More About Flask</a></li>
-                </ul>
-            </nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="library.html">Books</a>
+                </li>
+            </ul>
         </div>
-        {% block body %} {% endblock %}
-        <footer class="footer">
-            <p>© 2016 Your Name Here</p>
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="index.html">Hello~Books</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                                                                <span class="navbar-toggler-icon"></span>
+                                    </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="admin.html">Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% block body %} {% endblock %}
+    <div id="footer">
+        <footer class="container-fluid futa w-100 bg-dark text-light py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5><i class="fa fa-book"></i> Hello~Books</h5>
+                        <hr>
+                        <p class="list-unstyled">
+                            <a href="index.html">Home</a>
+                            <a href="library.html">Books</a>
+                            <a href="login.html">Login</a>
+                            <p>Connect with us</p>
+                        </p>
+                        <ul class="nav">
+                            <li class="nav-item"><a href="" class="nav-link pl-0"><i class="fa fa-facebook fa-lg"></i></a></li>
+                            <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-twitter fa-lg"></i></a></li>
+                            <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-github fa-lg"></i></a></li>
+                            <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-instagram fa-lg"></i></a></li>
+                        </ul>
+                        <br>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="container">
+                            <h5 class="text-md-center">Hello~Books enables users to find</h5>
+                            <h5 class="text-md-center">and rent books.</h5>
+                            <hr>
+                            <ul>
+                                <i class="fa fa-clock-o"> <span>Serving from Monday to Friday.</span></i>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="text-md-center">Copyright &copy; 2018 Emmanuel Michira</h5>
+                        <hr>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
     <!-- /container -->
