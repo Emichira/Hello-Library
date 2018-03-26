@@ -11,30 +11,35 @@ class TestHelloBooksApi(unittest.TestCase):
     def test_admin_add_a_book(self):
         book = {"ISBN": "00001", "Title": "MacBeth", "Author": "Shakespear", "Date-Published": "12/10/2018",
             "category": "Good Reads"}
-        response = self.client.post("/api/v1/books", data=book,
+        result = self.client.post("/api/v1/books", data=book,
         content_type="application/json")
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(result.status_code, 201)
 
     def test_admin_delete_a_book(self):
         book = {"ISBN": "00001", "Title": "MacBeth", "Author": "Shakespear", "Date-Published": "12/10/2018",
             "category": "Good Reads"}
-        response = self.client.delete(
+        result = self.client.delete(
             "/api/v1/books/<ISBN>", data=book,
             content_type="application/json")
-        self.assertEqual(response.status_code, 204)
+        self.assertEqual(result.status_code, 204)
 
     def test_admin_can_edit_a_book(self):
-        #tests if a the api can get a book and edit it 
-        res = self.client().post("/api/v1/books/<bookid>", data=book,content_type="application/json")
-        self.assertEqual(res.status_code,201)
+        book = {"ISBN":"00001","Title":"MacBeth","Author":"Shakespear","Date-Published": "12/10/2018", "category": "Good Reads"}
+        response = self.client.put(
+            "/api/v1/books/<bookid>", data=book,
+            content_type="application/json")
 
-        #convert response into json so as to get the id
-        result_in_json=json.loads(res.data.decode('utf-8').replace("'", "\""))
+        self.assertEqual(response.status_code, 201)
 
-        #this edits the current book
-        put_request=self.client().put('/api/v1/books/<bookid>{}'.format(result_in_json['id']), data={"ISBN":"00001","Title":"MacBeth","Author":"Shakespear","Date-Published": "12/10/2018", "category": "Good Reads"})
-
-        self.assertEqual(put_request.status_code,200)
+    def test_can_get_all_books(self):
+        books = {"ISBN":"00001","Title":"MacBeth","Author":"Shakespear","Date-Published": "12/10/2018", "category": "Good Reads",
+                 "ISBN":"00001","Title":"MacBeth","Author":"Shakespear","Date-Published": "12/10/2018", "category": "Good Reads",
+                 "ISBN":"00001","Title":"MacBeth","Author":"Shakespear","Date-Published": "12/10/2018", "category": "Good Reads",
+                 "ISBN":"00001","Title":"MacBeth","Author":"Shakespear","Date-Published": "12/10/2018", "category": "Good Reads"}
+        response = self.client.get(
+            "/api/v1/book", data=books,
+            content_type="application/json")
+        self.assertEqual(response.status_code, 200)
 
 
 
