@@ -41,6 +41,13 @@ class TestHelloBooksApi(unittest.TestCase):
             content_type="application/json")
         self.assertEqual(response.status_code, 200)
 
+    def test_user_can_boorow_book(self):
+            book = {"ISBN":"00001","Title":"MacBeth","Author":"Shakespear","Date-Published": "12/10/2018", "category": "Good Reads"}
+        response = self.client.post(
+            "/api/v1/users/books/<bookId>", data=book,
+            content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+
 
 
 if __name__ == "__main__":
